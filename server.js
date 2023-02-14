@@ -10,7 +10,13 @@ const app = express();
 //Express middleware
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
-
+//When response is not found
+app.use((req, res) => {
+    res.status(404).end();
+});
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
 // Connect to the database
 connection.connect(err => {
   if (err) {
@@ -20,14 +26,6 @@ connection.connect(err => {
   console.log('Connected to the database.');
 });
 
-app.use((req, res) => {
-    res.status(404).end();
-  });
-  
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-  
 const Prompts = () => {
   inquirer.prompt ([
     {
@@ -87,11 +85,38 @@ const Prompts = () => {
 };
 
 Prompts();
+//handling queries
+connection.query("", function(err, results) {
+    console.log(results);
+});
+
+
+
+
 
 
 //Functions Below
 const ViewEmployees = () => {
     console.log("View Employee");
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "firstName",
+            message: "Enter employee's first name: ",
+        },
+        {
+            type: "input",
+            name: "lastName",
+            message: "Enter employee's last name: ",
+        },
+        {
+            type: "input",
+            name: "role",
+            message: "Enter employee's role: ",
+        }
+    ]).then(employee => {
+        employee
+    })
 }
 const AddEmployees = () => {
     console.log("Add Employee");
@@ -101,12 +126,14 @@ const UpdateEmployees = () => {
 }
 const ViewRoles = () => {
     console.log("View Role");
+    connection.query();
 }
 const AddRole = () => {
     console.log("Add a role")
 }
 const ViewDepartments = () => {
     console.log("view all departments")
+    connection.query();
 }
 const AddDepartments = () => {
     console.log("Add a department");
