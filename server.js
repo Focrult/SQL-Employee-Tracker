@@ -93,17 +93,23 @@ Prompts();
 // Functions Below
 const ViewEmployees = () => {
     console.log("View Employee");
-    const viewAll = `SELECT * FROM employee`;
+    const viewAll = `
+    SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, CONCAT(manager.first_name, ' ', manager.last_name) AS manager_name
+    FROM employee
+    INNER JOIN role ON employee.role_id = role.id
+    INNER JOIN department ON role.department = department.id
+    LEFT JOIN employee manager ON employee.manager_id = manager.id;
+    `;
     connection.query(viewAll, (err, rows) => {
-     if(err){
-        console.log(err)
-     } else{
+      if (err) {
+        console.log("Error");
+        console.log(err);
+      } else {
         console.table(rows);
-        return Prompts();
-     }
+      }
+      Prompts();
     });
-
-}
+  };
 const AddEmployees = () => {
     inquirer.prompt([
       {
@@ -129,13 +135,13 @@ const AddEmployees = () => {
     ]).then(employee => {
       connection.query(
         "INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)",
-        [employee.firstName, employee.lastName, employee.roleid, managerid],
+        [employee.firstName, employee.lastName, employee.roleid, employee.managerid],
         (err, result) => {
           if (err) {
             console.error(err);
             return;
           }
-          console.log(`${employee.firstName} ${employee.lastName} with the role of ${employee.roleid} has been added to the database.`);
+          console.log(`${employee.firstName} ${employee.lastName} |ID:${employee.roleid}| who is assigned to ID:${employee.managerid}, has been added to the database.`);
           Prompts();
         }
       );
@@ -147,12 +153,12 @@ const AddEmployees = () => {
         {
         type: "input",
         name: "employeeId",
-        message: "Enter the ID of the employee you want to update: ",
+        message: "Enter Employee ID: ",
         },
         {
         type: "input",
         name: "newRole",
-        message: "Enter the ID of the new role: ",
+        message: "Enter Employee new role ID: ",
         },
     ]).then(({ employeeId, newRole }) => {
         const sql = "UPDATE employee SET role_id = ? WHERE id = ?";
@@ -162,7 +168,7 @@ const AddEmployees = () => {
                 console.log(err);
                 return;
             }
-            console.log("Employee role updated.");
+            console.log(`Employee |ID: ${employeeId}| role updated to ID:${newRole}.`);
             Prompts();
         });
     });
