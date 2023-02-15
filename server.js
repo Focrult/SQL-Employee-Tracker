@@ -3,6 +3,7 @@ const express = require('express');
 const inquirer= require('inquirer');
 const mysql = require('mysql2');
 const connection = require('./db');
+const Table = require('console.table')
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -25,6 +26,7 @@ connection.connect(err => {
   }
   console.log('Connected to the database.');
 });
+
 
 const Prompts = () => {
   inquirer.prompt ([
@@ -84,20 +86,25 @@ const Prompts = () => {
   });
 };
 
-Prompts();
+
 //handling queries
-connection.query("", function(err, results) {
+connection.query("SELECT * FROM department", function(err, results) {
+    console.log("Passing connection.query")
     console.log(results);
 });
 
 
-
+//Prompts();
 
 
 
 //Functions Below
 const ViewEmployees = () => {
     console.log("View Employee");
+
+}
+const AddEmployees = () => {
+    console.log("Add Employee");
     inquirer.prompt([
         {
             type: "input",
@@ -118,9 +125,6 @@ const ViewEmployees = () => {
         employee
     })
 }
-const AddEmployees = () => {
-    console.log("Add Employee");
-}
 const UpdateEmployees = () => {
     console.log("Update Employee");
 }
@@ -132,12 +136,26 @@ const AddRole = () => {
     console.log("Add a role")
 }
 const ViewDepartments = () => {
-    console.log("view all departments")
-    connection.query();
+    console.log("All Departments\n")
+    const viewAll = `SELECT * FROM department`;
+    connection.query(viewAll, (err, rows) => {
+     if(err){
+        console.log(err)
+     } else{
+        console.table(rows);
+        return Prompts();
+     }
+    });
 }
 const AddDepartments = () => {
     console.log("Add a department");
 }
 const Exit = () => {
     console.log("Exit");
+
+
+
+
+
+
 }
