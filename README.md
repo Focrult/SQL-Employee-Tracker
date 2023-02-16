@@ -15,9 +15,7 @@ There have been several challenges that I encountered throughout the making of t
 To use this application, the user will be required to make a few installations. Firstly you'll need to use the MySQL2 package to connect to the MySQL database and perform queries. The Inquirer package for the user to interact with prompts via the commend line is a must, and the console.table package is essential to print MySQL tables in the console. One final package that the user will install is the DotEnv package.
 
 # Usage
-AS A business owner
-I WANT to be able to view and manage the departments, roles, and employees in my company
-SO THAT I can organize and plan my business
+![usage](https://user-images.githubusercontent.com/114898970/219261840-cc860da5-39bc-47c0-acad-17bd4b045f69.png)
 
 # Video
 Link to full video: https://watch.screencastify.com/v/NSJniEaI8dmQk3nFpVqO
