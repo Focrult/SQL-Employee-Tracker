@@ -18,7 +18,7 @@ For this project I have been tasked to c
 # Usage
 
 
-# GIF
+# VIDEO
 
 
 # Credits
