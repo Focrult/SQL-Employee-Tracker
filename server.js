@@ -27,7 +27,6 @@ connection.connect(err => {
     console.log('Connected to the database.');
 });
 
-
 const Prompts = () => {
   inquirer.prompt ([
     {
@@ -80,8 +79,7 @@ const Prompts = () => {
 
 // Handling queries
 connection.query("SELECT * FROM department", function(err, results) {
-    console.log("Passing connection.query")
-    console.log(results);
+    console.log(err);
 });
 
 // Functions Below
@@ -141,7 +139,7 @@ const AddEmployees = () => {
       );
     });
   };
-  const UpdateEmployees = () => {
+const UpdateEmployees = () => {
     console.log("Update Employee");
     inquirer.prompt([
         {
@@ -175,8 +173,8 @@ const ViewRoles = () => {
         console.log(err)
      } else{
         console.table(rows);
-        return Prompts();
      }
+     Prompts();
     });
 }
 const AddRole = () => {
@@ -210,7 +208,7 @@ const AddRole = () => {
             Prompts();
           }
         );
-      });
+    });
 }
 const ViewDepartments = () => {
     console.log("All Departments\n")
@@ -220,8 +218,8 @@ const ViewDepartments = () => {
         console.log(err)
      } else{
         console.table(rows);
-        return Prompts();
      }
+     Prompts();
     });
 }
 const AddDepartments = () => {
@@ -245,7 +243,7 @@ const AddDepartments = () => {
             Prompts();
           }
         );
-      });
+    });
 }
 const Exit = () => {
     console.log("Goodbye!");
