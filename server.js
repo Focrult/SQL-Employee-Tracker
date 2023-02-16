@@ -44,7 +44,7 @@ const Prompts = () => {
           "Add Department",
           "Exit"
       ]
-    }
+    } 
   ]).then(choice1 => {
       const verify = choice1.Start;
       switch (verify){ // This switch statement goes through user choice
@@ -160,8 +160,8 @@ const UpdateEmployees = () => {
                 console.log(err);
                 return;
             }
-            console.log(`Employee |ID: ${employeeId}| role updated to ID:${newRole}.`);
-            Prompts();
+            else{console.log(`Employee |ID: ${employeeId}| role updated to ID:${newRole}.`);
+            Prompts();}
         });
     });
 }
