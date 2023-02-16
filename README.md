@@ -6,7 +6,7 @@
 Here is an application that enables its user to view, and manage their companies departments, employee roles, and employees. This application strongly utilises the SQL package. 
 
 ### Files modified
-For this project I have been tasked to create files from scratch and ensure the application follows the criteria. This includes several sql files, db.js and server.js.
+For this project I have been tasked to create files from scratch and ensure the application follows the criteria. Including several sql files and js files, each with a unique purpose to perform tasks.
 
 ### Challenges
 There have been several challenges that I encountered throughout the making of this application. However, a major takeaway is me getting used to the SQL syntax and implementing it properly for the tables to be displayed properly. After much trial and error, it was resolved. 
