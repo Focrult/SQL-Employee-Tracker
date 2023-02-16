@@ -18,15 +18,16 @@ app.use((req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
-// Connect to the database
+// Verify connection to the database
 connection.connect(err => {
   if (err) {
         console.error('Error connecting to the database: ' + err.stack);
     return;
   }
     console.log('Connected to the database.');
+    Prompts();
 });
-
+// Prompts
 const Prompts = () => {
   inquirer.prompt ([
     {
@@ -46,7 +47,7 @@ const Prompts = () => {
     }
   ]).then(choice1 => {
       const verify = choice1.Start;
-      switch (verify){
+      switch (verify){ // This switch statement goes through user choice
           case "View all Employees":
                 ViewEmployees();
               break;
@@ -77,14 +78,10 @@ const Prompts = () => {
     });
 };
 
-// Handling queries
-connection.query("SELECT * FROM department", function(err, results) {
-    console.log(err);
-});
-
 // Functions Below
+// To view all employees in the database
 const ViewEmployees = () => {
-    console.log("View Employee");
+    console.log("All Employees Displayed: ");
     const viewAll = `
     SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, CONCAT(manager.first_name, ' ', manager.last_name) AS manager_name
     FROM employee
@@ -102,7 +99,9 @@ const ViewEmployees = () => {
       Prompts();
     });
   };
+// To add a new employee to the database
 const AddEmployees = () => {
+    console.log("Add an employee below: ");
     inquirer.prompt([
       {
         type: "input",
@@ -139,8 +138,9 @@ const AddEmployees = () => {
       );
     });
   };
+// To update an existing employees role from the database
 const UpdateEmployees = () => {
-    console.log("Update Employee");
+    console.log("Update an existing employees role: ");
     inquirer.prompt([
         {
         type: "input",
@@ -165,8 +165,9 @@ const UpdateEmployees = () => {
         });
     });
 }
+// To view all roles in the database
 const ViewRoles = () => {
-    console.log("View Role");
+    console.log("You are viewing all roles: ");
     const viewAll = `SELECT * FROM role`;
     connection.query(viewAll, (err, rows) => {
      if(err){
@@ -177,8 +178,9 @@ const ViewRoles = () => {
      Prompts();
     });
 }
+// To add a new role to the database
 const AddRole = () => {
-    console.log("Add a role")
+    console.log("Add a role: ")
     inquirer.prompt([
         {
         type: "input",
@@ -210,8 +212,9 @@ const AddRole = () => {
         );
     });
 }
+// To view all departments in the database
 const ViewDepartments = () => {
-    console.log("All Departments\n")
+    console.log("You are viewing all departments: ")
     const viewAll = `SELECT * FROM department`;
     connection.query(viewAll, (err, rows) => {
      if(err){
@@ -222,8 +225,9 @@ const ViewDepartments = () => {
      Prompts();
     });
 }
+// To Add a new department to the database
 const AddDepartments = () => {
-    console.log("Add a department");
+    console.log("Add a department: ");
     inquirer.prompt([
         {
         type: "input",
@@ -245,9 +249,9 @@ const AddDepartments = () => {
         );
     });
 }
+// Exit the application
 const Exit = () => {
     console.log("Goodbye!");
     return;
 }
 
-Prompts();
