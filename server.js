@@ -78,17 +78,11 @@ const Prompts = () => {
     });
 };
 
-
 // Handling queries
 connection.query("SELECT * FROM department", function(err, results) {
     console.log("Passing connection.query")
     console.log(results);
 });
-
-
-Prompts();
-
-
 
 // Functions Below
 const ViewEmployees = () => {
@@ -98,7 +92,7 @@ const ViewEmployees = () => {
     FROM employee
     INNER JOIN role ON employee.role_id = role.id
     INNER JOIN department ON role.department = department.id
-    LEFT JOIN employee manager ON employee.manager_id = manager.id;
+    LEFT JOIN manager ON employee.manager_id = manager.id;
     `;
     connection.query(viewAll, (err, rows) => {
       if (err) {
@@ -254,6 +248,8 @@ const AddDepartments = () => {
       });
 }
 const Exit = () => {
-    console.log("Exit");
+    console.log("Goodbye!");
     return;
 }
+
+Prompts();

@@ -37,7 +37,7 @@ VALUES
 ("Gareth", "Keenan", 2, 5),
 ("Dwight", "Schrute", 7, 4),
 ("Pam", "Beesly", 1, 5),
-("Jim", "Halpert", 0, 3),
+("Jim", "Halpert", 1, 3),
 ("Michael", "Scott", 5, 1),
 ("John", "Smith", 6, 2);
 
