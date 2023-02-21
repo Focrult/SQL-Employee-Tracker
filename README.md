@@ -20,6 +20,8 @@ To use this application, the user will be required to make a few installations. 
 # Video
 Link to full video: https://watch.screencastify.com/v/NSJniEaI8dmQk3nFpVqO
 
+GoogleDrive link: https://drive.google.com/file/d/1Tf7ZuLOa-jn63sazdBzR4bmxra0P_ndS/view?usp=share_linkhttps://drive.google.com/file/d/1Tf7ZuLOa-jn63sazdBzR4bmxra0P_ndS/view?usp=share_linkLinks to an external site.
+
 # Credits
 N/A
 
