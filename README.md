@@ -18,9 +18,7 @@ To use this application, the user will be required to make a few installations. 
 ![usage](https://user-images.githubusercontent.com/114898970/219261840-cc860da5-39bc-47c0-acad-17bd4b045f69.png)
 
 # Video
-Link to full video: https://watch.screencastify.com/v/NSJniEaI8dmQk3nFpVqO
-
-GoogleDrive link: https://drive.google.com/file/d/1Tf7ZuLOa-jn63sazdBzR4bmxra0P_ndS/view?usp=share_linkhttps://drive.google.com/file/d/1Tf7ZuLOa-jn63sazdBzR4bmxra0P_ndS/view?usp=share_linkLinks 
+GoogleDrive link: https://drive.google.com/file/d/1Tf7ZuLOa-jn63sazdBzR4bmxra0P_ndS/view
 
 # Credits
 N/A
